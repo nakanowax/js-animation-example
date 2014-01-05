@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>Zepto.js Animation Sample</title>
+<link rel="stylesheet" href="css/main.css">
+<script src="./js/zepto.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+    $("#sample").click(function(){
+        $("#sample").animate({
+            opacity: 0.25,                // 透明
+            width: '500px',               // 横に伸びる
+            height: '500px',              // 下に伸びる
+            rotateZ: '90deg',             // 右に90°回転
+            rotateX: '360deg',            // 上下1回転
+            rotateY: '360deg',            // 左右2回転
+            translate3d: '30px,30px,0px', // 斜めに移動
+            translateX: '50px',           // 右に移動 50px 移動
+            translateX: '-50px',          // 左に移動 50px 移動
+            translateY: '-50px',          // 上に移動 50px 移動
+            translateY: '50px',           // 下に移動 50px 移動
+            //scaleX: '3',                  // 両サイドに3倍!?
+            //scaleY: '3',                  // 上下に３倍
+            scale: '3,3',                 // 全体的に３倍
+            //skewX: '45deg',               // 45°横に歪んだ
+            //skewY: '45deg',               // 45°縦に歪んだ
+            skew: '30deg,30deg',          // 30°縦横に歪んだ
+            }, 1000
+        );
+    });
+    // Blink
+    setInterval(function(){
+        var fade= function(){
+            $('#blink').anim({opacity:'1'},0.1,'linear');
+        }
+        $('#blink').anim({opacity:'0'},0.1,'linear', fade);
+    },500);
+
+    // ratation
+    setInterval(function(){
+        var rate = function(){
+            $('#rota').anim({width:'50px'},0.1,'linear');
+        };
+        $('#rota').anim({width:'0px'},0.1,'linear',rate);
+    }, 500);
+
+    // move
+    setInterval(function(){
+        var move = function(){
+            $('#move').anim({translateX:'-100px'},0.5,'linear');
+        };
+        $('#move').anim({translateX:'100px'},0.5,'linear',move);
+    }, 500);
+
+});
+</script>
+</head>
+<body>
+<h2>Animation Sample</h2>
+<article>
+<h2>Sample</h2>
+<img id="sample" src="./img/square.jpg" width="50px" height="50px">
+</article>
+<article>
+<h2>Blink</h2>
+<img id="blink" src="./img/square.jpg" width="50px" height="50px">
+</article>
+<article>
+<h2>rotation</h2>
+<img id="rota" src="./img/square.jpg" width="50px" height="50px">
+</article>
+<article>
+<h2>Move</h2>
+<img id="move" src="./img/square.jpg" width="50px" height="50px">
+</article>
+<footer id="foot">Zepto.js Animation Sample</footer>
+</body>
+</html>
